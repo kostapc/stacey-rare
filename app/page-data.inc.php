@@ -205,17 +205,24 @@ Class PageData
 
     static function get_shared_data()
     {
-        if (self::$shared) return self::$shared;
-        $shared_file_path = file_exists(Config::$content_folder . '/_shared.yml') ? Config::$content_folder . '/_shared.yml' : Config::$content_folder . '/_shared.txt';
+        if (self::$shared) {
+            return self::$shared;
+        }
+        $shared_file_path = file_exists(Config::$content_folder . '/_shared.txt');
         if (file_exists($shared_file_path)) {
             //return self::$shared = sfYaml::load($shared_file_path);
+            return array(
+                'name' => 'Ñame B',
+                'profession' => 'Gräphic Designer B',
+                'email' => 'hiB@yourdomain.com'
+            );
+        } else {
+            //return array();
             return array(
                 'name' => 'Ñame A',
                 'profession' => 'Gräphic Designer A',
                 'email' => 'hia@yourdomain.com'
             );
-        } else {
-            return array();
         }
     }
 
@@ -225,6 +232,15 @@ Class PageData
             'return ": |\n  ".preg_replace("/\n/", "\n  ", $match[2]);'
         ), $text);
         return $content;
+    }
+
+    static function format_file_name($file_name) {
+        $file_name = get_file_name($file_name);
+        $start = stripos ( $file_name, '.');
+        $file_name = substr($file_name,$start+1);
+        $file_name = str_replace('-',' ', $file_name);
+        $file_name = str_replace('_',' ', $file_name);
+        return $file_name;
     }
 
     static function create_textfile_vars($page, $content = false)
@@ -253,15 +269,15 @@ Class PageData
 
             $vars = array(
                 'content' => $content,
-                'date' => '2014-02-16',
-                'title' => 'title from file *' . $page->file_path . '*'
+                'date' => date("F d Y H:i:s.", filectime($page->file_path)),
+                'title' => self::format_file_name($page->file_path)
             );
-            var_dump($page);
+            //var_dump($page);
         }
 
         # include shared variables for each page
         // TODO: get shared vars from json
-        // $vars = array_merge(self::get_shared_data(), $vars ? $vars : array());
+        $vars = array_merge(self::get_shared_data(), $vars ? $vars : array());
         if (empty($vars)) return;
 
         global $current_page_template_file;
@@ -325,6 +341,7 @@ Class PageData
 
         # if file extension matches an xml type, convert to any html to xhtml to pass validation
         global $current_page_template_file;
+
         if (preg_match('/\.(xml|rss|rdf|atom)$/', $current_page_template_file)) {
             # clean each value for xhtml rendering
             foreach ($page->data as $key => $value) {

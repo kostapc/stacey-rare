@@ -4,7 +4,7 @@
 #
 # PHP Markdown & Extra
 # Copyright (c) 2004-2009 Michel Fortin  
-# <http://michelf.com/projects/php-markdown/>
+# <http://michelf.com/1.archive/php-markdown/>
 #
 # Modified to preserve line breaks, line #675
 # <http://stackoverflow.com/questions/2092966/how-to-treat-single-newline-as-real-line-break-in-php-markdown>
@@ -15,7 +15,7 @@
 #
 # Original Markdown
 # Copyright (c) 2004-2006 John Gruber  
-# <http://daringfireball.net/projects/markdown/>
+# <http://daringfireball.net/1.archive/markdown/>
 #
 
 define( 'MARKDOWN_VERSION',  "1.0.1n" ); # Sat 10 Oct 2009
@@ -75,8 +75,8 @@ function Markdown($text) {
 
 /*
 Plugin Name: Markdown Extra
-Plugin URI: http://michelf.com/projects/php-markdown/
-Description: <a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a> allows you to write using an easy-to-read, easy-to-write plain text format. Based on the original Perl version by <a href="http://daringfireball.net/">John Gruber</a>. <a href="http://michelf.com/projects/php-markdown/">More...</a>
+Plugin URI: http://michelf.com/1.archive/php-markdown/
+Description: <a href="http://daringfireball.net/1.archive/markdown/syntax">Markdown syntax</a> allows you to write using an easy-to-read, easy-to-write plain text format. Based on the original Perl version by <a href="http://daringfireball.net/">John Gruber</a>. <a href="http://michelf.com/1.archive/php-markdown/">More...</a>
 Version: 1.2.4
 Author: Michel Fortin
 Author URI: http://michelf.com/
@@ -2878,7 +2878,7 @@ HTML tags (like <div> and <table> as well).
 
 For more information about Markdown's syntax, see:
 
-<http://daringfireball.net/projects/markdown/>
+<http://daringfireball.net/1.archive/markdown/>
 
 
 Bugs

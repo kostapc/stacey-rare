@@ -86,7 +86,9 @@ Class Helpers {
       # if file matches regex, continue
       if(isset($file['file_name']) && preg_match($regex, $file['file_name'])) {
         # if $folders_only is true and the file is not a folder, skip it
-        if($folders_only && !$file['is_folder']) continue;
+        if($folders_only && !$file['is_folder']) {
+            continue;
+        }
         # otherwise, add file to results list
         $files[$file['file_name']] = $file['path'];
       }

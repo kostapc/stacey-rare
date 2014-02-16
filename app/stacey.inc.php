@@ -111,6 +111,14 @@ Class Stacey {
     $template_name = Page::template_name($file_path);
     $current_page_template_file = Page::template_file($template_name);
 
+    /*
+      echo 'current template selection for '.$file_path.'<br>';
+      echo '$template_name = '.$template_name.'<br>';
+      echo '$current_page_template_file = '.$current_page_template_file.'<br>';
+
+      exit(0);
+    */
+
     # error out if template file doesn't exist (or glob returns an error)
     if(empty($template_name)) throw new Exception('404');
     # render page
